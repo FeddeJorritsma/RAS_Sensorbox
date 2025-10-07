@@ -1,23 +1,27 @@
-<!-- <launch>
-    <include file="$(find-pkg-share pylon_ros2_camera_wrapper)/launch/pylon_ros2_right_camera.launch.py" />
-</launch> -->
 <launch>
+    <!-- left camera -->
     <include file="$(find-pkg-share pylon_ros2_camera_wrapper)/launch/pylon_ros2_camera.launch.py">
         <arg name="node_name" value="left_pylon_camera_node" />
         <arg name="camera_id" value="left_camera" />
         <arg name="config_file" value="$(find-pkg-share main_package)/config/left_camera.yaml" />
     </include>
-
+    <!-- middle camera -->
     <include file="$(find-pkg-share pylon_ros2_camera_wrapper)/launch/pylon_ros2_camera.launch.py">
         <arg name="node_name" value="middle_pylon_camera_node" />
         <arg name="camera_id" value="middle_camera" />
         <arg name="config_file" value="$(find-pkg-share main_package)/config/middle_camera.yaml" />
     </include>
-
+    <!-- right camera -->
     <include file="$(find-pkg-share pylon_ros2_camera_wrapper)/launch/pylon_ros2_camera.launch.py">
         <arg name="node_name" value="right_pylon_camera_node" />
         <arg name="camera_id" value="right_camera" />
         <arg name="config_file" value="$(find-pkg-share main_package)/config/right_camera.yaml" />
     </include>
+    <!-- LiDAR Velodyne VLP-16 -->
+    <include file="$(find-pkg-share velodyne)/launch/velodyne-all-nodes-VLP16-launch.py">
+        <arg name="node_name" value="velodyne" />
+    </include>
+    <node pkg="tf2_ros" exec="static_transform_publisher" name="static_tf_pub_velodyne" 
+          args="0 0 1 0 0 0 base_link velodyne" />
 
 </launch>
