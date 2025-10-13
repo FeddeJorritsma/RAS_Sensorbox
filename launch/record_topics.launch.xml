@@ -1,0 +1,11 @@
+<launch>
+    <arg name="output_dir" 
+         default="/home/ras-sensorbox/ros2_bag_files/new_file" />
+
+    <executable cmd="ros2 bag record -o $(var output_dir) 
+                       /middle_camera/middle_pylon_camera_node/image_raw 
+                       /velodyne_points 
+                       /tf_static"
+                output="screen"
+                shell="true" />
+</launch>
