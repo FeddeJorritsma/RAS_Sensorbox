@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="ublox_gps" exec="ublox_gps_node" output="both" required="true">
+        <param from="$(find-pkg-share main_package)/config/gps_parameters.yaml"/>
+    </node>
+</launch>

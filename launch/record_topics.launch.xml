@@ -1,4 +1,4 @@
-<launch>
+ <launch>
     <arg name="output_dir" 
          default="/home/ras-sensorbox/ros2_bag_files/new_file" />
 

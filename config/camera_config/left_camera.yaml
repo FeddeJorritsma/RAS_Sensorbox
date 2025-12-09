@@ -4,16 +4,16 @@
   ros__parameters:
 
     #  The tf frame under which the images were published
-    camera_frame: right_camera
+    camera_frame: left_camera
 
     #  The DeviceUserID of the camera. If empty, the first camera found in the
     #  device list will be used
-    device_user_id: "right_camera"
+    device_user_id: "left_camera"
 
     #  The CameraInfo URL (Uniform Resource Locator) where the optional intrinsic
     #  camera calibration parameters are stored. This URL string will be parsed
     #  from the ROS-CameraInfoManager:
-    camera_info_url: "file:///home/ras-sensorbox/dev_ws/src/RAS_Sensorbox/config/camera_parameters/right_camera.yaml"
+    camera_info_url: "file:///home/ras-sensorbox/dev_ws/src/RAS_Sensorbox/config/camera_parameters/left_camera.yaml"
 
     #  The encoding of the pixels -- channel meaning, ordering, size
     #  taken from the list of strings in include/sensor_msgs/image_encodings.h
@@ -49,7 +49,7 @@
     ##########################################################################
 
     #  The exposure time in microseconds to be set after opening the camera.
-    exposure: 10000.0
+    exposure: 1000.0
 
     #  The target gain in percent of the maximal value the camera supports
     #  For USB cameras, the gain is in dB, for GigE cameras it is given in so
