@@ -2,4 +2,16 @@
     <node pkg="ublox_gps" exec="ublox_gps_node" output="both">
         <param from="$(find-pkg-share main_package)/config/gps_parameters.yaml"/>
     </node>
+    <node pkg="ntrip_client" exec="ntrip_ros.py" name="ntrip_client" output="screen">
+        
+        <param from="$(find-pkg-share main_package)/config/ntrip.yaml"/>
+
+        <env name="NTRIP_CLIENT_DEBUG" value="false"/>
+
+        <remap from="nmea" to="/ublox_gps_node/nmea"/>
+        <remap from="rtcm" to="/ublox_gps_node/rtcm"/>
+        
+    </node>
+
+
 </launch>

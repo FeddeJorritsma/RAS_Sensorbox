@@ -23,5 +23,20 @@
     </include>
     <node pkg="tf2_ros" exec="static_transform_publisher" name="static_tf_pub_velodyne" 
           args="0 0 1 0 0 0 base_link velodyne" />
+    
+    <!-- Ublox node -->
+    <node pkg="ublox_gps" exec="ublox_gps_node" output="both">
+        <param from="$(find-pkg-share main_package)/config/gps_parameters.yaml"/>
+    </node>
+    <!-- NTRIP corrections -->
+    <node pkg="ntrip_client" exec="ntrip_ros.py" name="ntrip_client" output="screen">
+        
+        <param from="$(find-pkg-share main_package)/config/ntrip.yaml"/>
 
+        <env name="NTRIP_CLIENT_DEBUG" value="false"/>
+
+        <remap from="nmea" to="/ublox_gps_node/nmea"/>
+        <remap from="rtcm" to="/ublox_gps_node/rtcm"/>
+        
+    </node>
 </launch>
